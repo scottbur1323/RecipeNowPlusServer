@@ -1,0 +1,25 @@
+{
+  "name": "recipe-now-plus-server",
+  "version": "1.0.0",
+  "description": "This is the Node.js/Express server for Recipe Now!",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "heroku": "^0.2.0",
+    "heroku-cli": "^6.16.16",
+    "knex": "^0.14.6",
+    "morgangit ": "^1.9.0",
+    "node": "^9.11.0",
+    "pg": "^7.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./recipe-now-plus-server/index.js"
+  },
+  "author": "Chance Scott-Burke",
+  "license": "ISC"
+}
