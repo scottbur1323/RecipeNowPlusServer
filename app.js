@@ -8,6 +8,19 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cors())
 
+app.get('/f2f', (req, res, next) => {
+  console.log(req)
+  runFood2Fork(req)
+  .then(recipes => {
+    res.send(recipes)
+  })
+  .catch(next)
+})
+
+function runFoodToFork(itemsToSearch) {
+  console.log('made it to f2f!')
+}
+
 app.use('/meals-table', require('./routes/meals'))
 app.use('/users-table', require('./routes/users'))
 
