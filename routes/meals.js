@@ -18,7 +18,7 @@ router.get("/:id", (request, response, next) => {
 });
 
 router.post("/", (request, response, next) => {
-    queries.createmeals(request.body).then(meals => {
+    queries.addtomeals(request.body).then(meals => {
         response.status(201).json({meals});
     }).catch(next);
 });

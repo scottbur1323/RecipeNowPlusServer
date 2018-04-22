@@ -18,14 +18,33 @@ app.post('/f2f', (req, res, next) => {
   .catch(next)
 })
 
+app.post('/f2fi', (req, res, next) => {
+  return runGetIngredients(req.body.id)
+  .then(recipes => {
+    res.send(recipes)
+  })
+  .catch(next)
+})
+
 function runFood2Fork(items) {
-  let fullURL = "http://food2fork.com/api/search?key=" + process.env.F2F_KEY + items
+  let fullURL = "http://food2fork.com/api/search?key=" + process.env.F2F_KEY + '&q=' + items
   return fetch(fullURL)
   .then(res => {
     return res.json()
   })
   .then(recipes => {
     return recipes.recipes
+  })
+}
+
+function runGetIngredients(mealID) {
+  let fullURL = "http://food2fork.com/api/get?key=" + process.env.F2F_KEY + '&rId=' + mealID
+  return fetch(fullURL)
+  .then(res => {
+    return res.json()
+  })
+  .then(recipe => {
+    return recipe.recipe.ingredients
   })
 }
 
