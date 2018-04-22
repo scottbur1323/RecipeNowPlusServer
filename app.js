@@ -2,23 +2,31 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const cors = require('cors')
+const fetch = require('node-fetch')
 const app = express()
+require('dotenv').load()
 
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/f2f', (req, res, next) => {
-  console.log(req)
-  runFood2Fork(req)
+app.post('/f2f', (req, res, next) => {
+  return runFood2Fork(req.body.items)
   .then(recipes => {
     res.send(recipes)
   })
   .catch(next)
 })
 
-function runFoodToFork(itemsToSearch) {
-  console.log('made it to f2f!')
+function runFood2Fork(items) {
+  let fullURL = "http://food2fork.com/api/search?key=" + process.env.F2F_KEY + items
+  return fetch(fullURL)
+  .then(res => {
+    return res.json()
+  })
+  .then(recipes => {
+    return recipes.recipes
+  })
 }
 
 app.use('/meals-table', require('./routes/meals'))
