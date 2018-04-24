@@ -1,6 +1,6 @@
 
 exports.seed = function(knex, Promise) {
-  return knex.raw('DELETE FROM "meals"; ALTER SEQUENCE meals_id_seq RESTART WITH 4;')
+  return knex.raw('DELETE FROM "users"; ALTER SEQUENCE users_id_seq RESTART WITH 4;')
     .then(function () {
       var user = [{
         id: 1,
@@ -24,6 +24,6 @@ exports.seed = function(knex, Promise) {
         savedLists: '',
         justInCase: ''
       }]
-      return knex('meals').insert(user)
+      return knex('users').insert(user)
     })
 }
