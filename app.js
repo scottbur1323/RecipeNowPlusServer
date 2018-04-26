@@ -31,6 +31,7 @@ app.post('/f2fi', (req, res, next) => {
 function runFood2Fork(items) {
   console.log("items: " + items);
   let fullURL = "https://food2fork.com/api/search?key=" + process.env.F2F_KEY + '&q=' + items
+  console.log("fullF2Furl: " + fullURL)
   return fetch(fullURL)
   .then(res => {
     return res.json()
