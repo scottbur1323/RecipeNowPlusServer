@@ -27,7 +27,7 @@ app.post('/f2fi', (req, res, next) => {
 })
 
 function runFood2Fork(items) {
-  let fullURL = "http://food2fork.com/api/search?key=" + process.env.F2F_KEY + '&q=' + items
+  let fullURL = "https://food2fork.com/api/search?key=" + process.env.F2F_KEY + '&q=' + items
   return fetch(fullURL)
   .then(res => {
     return res.json()
@@ -38,7 +38,7 @@ function runFood2Fork(items) {
 }
 
 function runGetIngredients(mealID) {
-  let fullURL = "http://food2fork.com/api/get?key=" + process.env.F2F_KEY + '&rId=' + mealID
+  let fullURL = "https://food2fork.com/api/get?key=" + process.env.F2F_KEY + '&rId=' + mealID
   return fetch(fullURL)
   .then(res => {
     return res.json()
