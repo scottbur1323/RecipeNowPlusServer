@@ -4,8 +4,6 @@ const router = express.Router()
 const queries = require('../queries')
 
 router.get("/", (request, response, next) => {
-
-    // response.send(request.body)
     queries.listusers().then(users => {
         response.json({users})
     })
@@ -21,7 +19,7 @@ router.get("/:id", (request, response, next) => {
 });
 
 router.post("/checker", (request, response, next) => {
-      response.send("Hello")
+      response.json({request.body})
 });
 
 router.post("/", (request, response, next) => {
