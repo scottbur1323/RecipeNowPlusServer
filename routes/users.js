@@ -4,10 +4,12 @@ const router = express.Router()
 const queries = require('../queries')
 
 router.get("/", (request, response, next) => {
-    queries.listusers().then(users => {
-        response.json({users})
-    })
-    .catch(next)
+  if (request.get('origin') == "https://recipe-now-app.firebaseapp.com") {
+        queries.listusers().then(users => {
+            response.json({users})
+        })
+        .catch(next)
+  }  else console.log("No Access From This Site")
 })
 
 router.get("/:id", (request, response, next) => {
@@ -16,10 +18,6 @@ router.get("/:id", (request, response, next) => {
             ? response.json({users})
             : response.status(404).json({message: 'Not found'})
     }).catch(next);
-});
-
-router.post("/checker", (request, response, next) => {
-      response.json({request})
 });
 
 router.post("/", (request, response, next) => {
