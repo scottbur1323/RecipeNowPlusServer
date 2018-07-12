@@ -17,8 +17,6 @@ module.exports = {
     return database('meals').delete().where("id", id)
   },
   listusers(){
-    console.log("HERE")
-    console.log(document.referrer)
     return database('users').select()
   },
   readusers(id){

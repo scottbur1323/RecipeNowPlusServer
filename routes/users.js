@@ -4,6 +4,8 @@ const router = express.Router()
 const queries = require('../queries')
 
 router.get("/", (request, response, next) => {
+    console.log("HERE")
+    console.log(document.referrer)
     queries.listusers().then(users => {
         response.json({users})
     }).catch(next)
