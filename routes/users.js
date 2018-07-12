@@ -4,11 +4,11 @@ const router = express.Router()
 const queries = require('../queries')
 
 router.get("/", (request, response, next) => {
-    console.log("HERE")
-    console.log(request.headers.referer)
+    response.send(request.headers.host)
     queries.listusers().then(users => {
         response.json({users})
-    }).catch(next)
+    })
+    .catch(next)
 })
 
 router.get("/:id", (request, response, next) => {
