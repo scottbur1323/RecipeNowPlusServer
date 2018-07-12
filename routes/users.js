@@ -5,7 +5,7 @@ const queries = require('../queries')
 
 router.get("/", (request, response, next) => {
 
-    response.send(request.body)
+    // response.send(request.body)
     queries.listusers().then(users => {
         response.json({users})
     })
