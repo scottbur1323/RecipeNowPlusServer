@@ -4,7 +4,8 @@ const router = express.Router()
 const queries = require('../queries')
 
 router.get("/", (request, response, next) => {
-    response.send(request.headers.host)
+
+    response.send(request.body)
     queries.listusers().then(users => {
         response.json({users})
     })
