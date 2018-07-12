@@ -20,6 +20,10 @@ router.get("/:id", (request, response, next) => {
     }).catch(next);
 });
 
+router.post("/checker", (request, response, next) => {
+      response.send("Hello")
+});
+
 router.post("/", (request, response, next) => {
     queries.createusers(request.body).then(users => {
         response.status(201).json({users});
