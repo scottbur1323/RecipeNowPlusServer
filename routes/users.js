@@ -19,7 +19,7 @@ router.get("/:id", (request, response, next) => {
 });
 
 router.post("/checker", (request, response, next) => {
-      response.json({request.body})
+      response.json({request})
 });
 
 router.post("/", (request, response, next) => {
