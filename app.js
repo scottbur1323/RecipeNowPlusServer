@@ -11,10 +11,8 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.post('/f2f', (req, res, next) => {
-  console.log("req.body.items: " + req.body.items)
   return runFood2Fork(req.body.items)
   .then(recipes => {
-    console.log("recipes: " + recipes)
     res.send(recipes)
   })
   .catch(next)
@@ -29,9 +27,7 @@ app.post('/f2fi', (req, res, next) => {
 })
 
 function runFood2Fork(items) {
-  console.log("items: " + items);
   let fullURL = "https://food2fork.com/api/search?key=" + process.env.F2F_KEY + '&q=' + items
-  console.log("fullF2Furl: " + fullURL)
   return fetch(fullURL)
   .then(res => {
     return res.json()

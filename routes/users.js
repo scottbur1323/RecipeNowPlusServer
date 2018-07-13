@@ -4,7 +4,7 @@ const router = express.Router()
 const queries = require('../queries')
 
 router.get("/", (request, response, next) => {
-  if (request.get('origin') == "https://recipe-now-app.firebaseapp.com") {
+  if (request.get('origin') == "https://recipe-now-app.firebaseapp.com" || request.get('origin') == "http://localhost:8080") {
         queries.listusers().then(users => {
             response.json({users})
         })
